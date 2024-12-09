@@ -11,7 +11,17 @@ public class Fibonacci {
      * else <code>fibN(n-1)</code> + <code>fibN(n-2)</code>.
      */
     public long fibN(int n) {
-        return -1L;
+        if(n<0 || n>92) return -1;
+        if (n == 0) return 0;
+        long start=0;
+        long start2=1;
+        long sum=0;
+        for (int i = 1; i <= n; i++) {
+            sum = start+start2;
+            start2 = start;
+            start = sum;
+        }
+        return sum;
     }
 
     /**
@@ -21,7 +31,11 @@ public class Fibonacci {
      * @return the sum of the Fibonacci numbers 0 through n.
      */
     public long sumN(int n) {
-         return -1L;
+        long buffer=0;
+        for (int i=1; i<=n; i++) {
+            buffer = buffer + fibN(i);
+        }
+        return buffer;
     }
 
     public Fibonacci() {
